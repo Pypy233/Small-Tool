@@ -15,11 +15,13 @@ class ViewController: UIViewController {
     var isDecimal = false
     var oprd = ""
     var isSecond = false
+    //After a caculation, clear the screen
+    var nextCalculate = false
     @IBOutlet weak var resultLabel: UILabel!
     
 
     @IBAction func buttonTap(_ sender: UIButton) {
-        if resultLabel.text == "0" || (isSecond && secondOperand == 0.0){
+        if resultLabel.text == "0" || (isSecond && secondOperand == 0.0 || nextCalculate){
                 resultLabel.text = ""
         }
         // the number occur in label
@@ -60,6 +62,7 @@ class ViewController: UIViewController {
             }else{
                 oprd = ""
             }
+            resultLabel.text = oprd
         }
     }
     
@@ -83,10 +86,12 @@ class ViewController: UIViewController {
                 result = 0.0
             }
             resultLabel.text = result.description
+            nextCalculate = true
             print("First operand: \(  firstOperand)")
             print("Second operand:  \(secondOperand)")
             print("Operator: \(oprd)")
             print("result: \(result)")
+            firstOperand = result
         }
     }
     
