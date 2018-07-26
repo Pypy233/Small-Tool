@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3F41CB21096F66005D6CB2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F41CA21096F66005D6CB2 /* Item.swift */; };
 		0CA9FE122108A4E2007F3394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA9FE112108A4E2007F3394 /* AppDelegate.swift */; };
 		0CA9FE142108A4E2007F3394 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA9FE132108A4E2007F3394 /* ViewController.swift */; };
 		0CA9FE172108A4E2007F3394 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA9FE152108A4E2007F3394 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C3F41CA21096F66005D6CB2 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0CA9FE0E2108A4E2007F3394 /* Shopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA9FE112108A4E2007F3394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CA9FE132108A4E2007F3394 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				0CA9FE1D2108A4E2007F3394 /* Info.plist */,
 				0CA9FE232108AC66007F3394 /* NewItemViewController.swift */,
 				0CA9FE252108B1A2007F3394 /* ItemViewController.swift */,
+				0C3F41CA21096F66005D6CB2 /* Item.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3F41CB21096F66005D6CB2 /* Item.swift in Sources */,
 				0CA9FE142108A4E2007F3394 /* ViewController.swift in Sources */,
 				0CA9FE262108B1A2007F3394 /* ItemViewController.swift in Sources */,
 				0CA9FE122108A4E2007F3394 /* AppDelegate.swift in Sources */,
@@ -307,6 +311,7 @@
 				0CA9FE222108A4E2007F3394 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

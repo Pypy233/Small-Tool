@@ -13,9 +13,14 @@ class NewItemViewController: UIViewController{
     @IBOutlet weak var itemNameTextField: UITextField!
     
     @IBOutlet weak var brandNameTextField: UITextField!
+    
+    
    
-   
-    @IBAction func saveItem() {
+    @IBAction func saveItem(sender: UIButton) {
+        if itemNameTextField != nil && brandNameTextField != nil{
+            let item = Item(itemName: itemNameTextField.text!, brandName: brandNameTextField.text!)
+        }
+        dismiss(animated: true, completion: nil)
     }
    
     

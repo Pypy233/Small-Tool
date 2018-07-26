@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     
-    let toBuyItems = [("milk", "Anchor"), ("bread", "US"), ("cellphone", "China"), ("shampoo", "gf"), ("gakki", "Japan"), ("py", "China")]
+    var toBuyItems = [Item(itemName: "milk", brandName: "Anchor"), Item(itemName: "bread", brandName: "US"), Item(itemName: "cellphone", brandName: "China"), Item(itemName: "shampoo", brandName: "gf"), Item(itemName: "gakki", brandName: "Japan"), Item(itemName: "py", brandName: "China")]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return toBuyItems.count
@@ -20,9 +20,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
-        let (item, source) = toBuyItems[indexPath.row]
-        cell.textLabel?.text = item
-        cell.detailTextLabel?.text = source
+        let item = toBuyItems[indexPath.row]
+        cell.textLabel?.text = item.itemName
+        if item.isBuy{
+            cell.textLabel?.textColor = UIColor.green
+        }else{
+            cell.textLabel?.textColor = UIColor.red
+        }
+        
+        cell.detailTextLabel?.text = item.brandName
         
         return cell
     }
@@ -33,13 +39,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "itemSegue" {
-            var destination: ItemViewController = segue.destinationViewController as ItemViewController
+            var destination1: ItemViewController = segue.destination as! ItemViewController
             if sender is Int {
-                var (itemName, brandName) = toBuyItems[sender as Int]
-                destination.itemName = itemName
-                destination.brandName = brandName
+                let item = toBuyItems[sender as! Int]
+                destination1.item = item
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(<#T##animated: Bool##Bool#>)
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {

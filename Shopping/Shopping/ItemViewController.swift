@@ -13,7 +13,7 @@ class ItemViewController: UIViewController{
     // Get the message from view controller
     var itemName: String?
     var brandName: String?
-    
+    var item: Item?
     
     @IBOutlet weak var itemNameLabel: UILabel!
     
@@ -21,17 +21,24 @@ class ItemViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if itemName != nil{
+        if item != nil{
             itemNameLabel.text = itemName
-        }
-        
-        if brandName != nil{
             brandNameLabel.text = brandName
         }
     }
     
     
-    @IBAction func isBuy() {
+    @IBAction func isBuy(sender: UIButton) {
+        if item != nil{
+            if item?.isBuy == false{
+                item?.isBuy = true
+                itemNameLabel.textColor = UIColor.green
+            }else{
+                item?.isBuy = false
+                itemNameLabel.textColor = UIColor.red
+            }
+            print(item?.description())
+        }
     }
     
     
