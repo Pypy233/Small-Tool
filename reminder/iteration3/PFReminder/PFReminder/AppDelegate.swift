@@ -7,17 +7,18 @@
 //
 
 import UIKit
-
+import CoreData
 import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    
+
     var window: UIWindow?
     
     //后台任务
     var backgroundTask : UIBackgroundTaskIdentifier! = nil
-    
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let center = UNUserNotificationCenter.current()
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -57,50 +59,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             self.backgroundTask = UIBackgroundTaskInvalid
         })
     }
-    
+
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        
-        //需求：需要取消今日的本地通知
-        //思路是即将进入app前台时，先获取通知中心的所有通知，再取消所有的通知，然后在拿到的所有通知一一找到其下一个触发的时间和现在对比，如果大于一天则重新加入通知中心
-        
-        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (requests : [UNNotificationRequest]) in
-            
-            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd"
-            let dateString = formatter.string(from: Date())
-            let dateInt = Int(dateString)
-            
-            for request in requests {
-                let trigger = request.trigger as! UNCalendarNotificationTrigger
-                let nextTriggerDate = trigger.nextTriggerDate()
-                let nextTriggerDateString = formatter.string(from: nextTriggerDate!)
-                let nextTriggerDateInt = Int(nextTriggerDateString)
-                
-                print("dateInt:\(String(describing: dateInt)) nextTriggerDateInt:\(String(describing: nextTriggerDateInt))")
-                
-                //触发时间比现在在 1 天以后，说明是第二天的通知了，需要重新加入到通知中心
-                if nextTriggerDateInt! - dateInt! > 0 {
-                    
-                    UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-                        
-                    })
-                }
-                
-            }
-        })
-        
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
+        self.saveContext()
+    }
+
+    // MARK: - Core Data stack
+
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+        */
+        let container = NSPersistentContainer(name: "PFReminder")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                 
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    // MARK: - Core Data Saving support
+
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
     
     
@@ -135,5 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         completionHandler()
     }
-    
+
+
 }
+
