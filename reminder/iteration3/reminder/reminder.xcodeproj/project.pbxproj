@@ -17,6 +17,7 @@
 		0CBA1435210A0C6D0076B664 /* Notification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA1433210A0C6D0076B664 /* Notification+CoreDataProperties.swift */; };
 		0CBA1437210A0E960076B664 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA1436210A0E960076B664 /* DateUtil.swift */; };
 		0CBA1439210A19EC0076B664 /* LocalNotifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA1438210A19EC0076B664 /* LocalNotifManager.swift */; };
+		0CFAD268214BA6AB00BD3EE4 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAD267214BA6AB00BD3EE4 /* test.swift */; };
 		0CFE8D86210B12F600051250 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE8D85210B12F600051250 /* DataBase.swift */; };
 		0CFE8D8A210B466500051250 /* AddNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE8D89210B466500051250 /* AddNotificationViewController.swift */; };
 		0CFE8D8C210B4D2600051250 /* TextFieldDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE8D8B210B4D2600051250 /* TextFieldDatePickerViewController.swift */; };
@@ -35,6 +36,7 @@
 		0CBA1433210A0C6D0076B664 /* Notification+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0CBA1436210A0E960076B664 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		0CBA1438210A19EC0076B664 /* LocalNotifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifManager.swift; sourceTree = "<group>"; };
+		0CFAD267214BA6AB00BD3EE4 /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		0CFE8D85210B12F600051250 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		0CFE8D89210B466500051250 /* AddNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNotificationViewController.swift; sourceTree = "<group>"; };
 		0CFE8D8B210B4D2600051250 /* TextFieldDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDatePickerViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		0CBA13F5210A01C70076B664 = {
 			isa = PBXGroup;
 			children = (
+				0CFAD267214BA6AB00BD3EE4 /* test.swift */,
 				0CBA1432210A0C6D0076B664 /* Notification+CoreDataClass.swift */,
 				0CBA1433210A0C6D0076B664 /* Notification+CoreDataProperties.swift */,
 				0CBA1400210A01C70076B664 /* PFReminder */,
@@ -125,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0CBA13F9210A01C70076B664 /* Build configuration list for PBXProject "PFReminder" */;
+			buildConfigurationList = 0CBA13F9210A01C70076B664 /* Build configuration list for PBXProject "reminder" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -171,6 +174,7 @@
 				0CBA1404210A01C70076B664 /* ViewController.swift in Sources */,
 				0CFE8D86210B12F600051250 /* DataBase.swift in Sources */,
 				0CBA1402210A01C70076B664 /* AppDelegate.swift in Sources */,
+				0CFAD268214BA6AB00BD3EE4 /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +322,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CBA13F9210A01C70076B664 /* Build configuration list for PBXProject "PFReminder" */ = {
+		0CBA13F9210A01C70076B664 /* Build configuration list for PBXProject "reminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CBA1411210A01C70076B664 /* Debug */,
